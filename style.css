@@ -192,8 +192,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;                                                                                                                                                                                 
     margin-bottom: 8px; 
-  }                    
-                                                                                                                                                                                                         
+  }                                                                                                                                                                                         
   .history-list {
     display: flex;                                                                                                                                                                                       
     flex-wrap: wrap;
