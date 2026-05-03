@@ -1,38 +1,137 @@
 <!DOCTYPE html>                                                                                                                                                                                        
-<html lang="ko">
+<html lang="ko">                                                                                                                                                                                       
 <head>                                                                                                                                                                                                 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />                                                                                                                             
-  <title>오늘 뭐먹지?</title>                                                                                                                                                                          
-  <link rel="stylesheet" href="style.css" />
-</head>                                                                                                                                                                                                
-<body>          
-  <div class="container">                                                                                                                                                                              
-    <h1>🍽️  오늘 뭐먹지?</h1>
-    <p class="subtitle">고민 그만! 버튼 하나로 메뉴 결정 완료</p>
+  <title>오늘 뭐먹지?</title>
+  <style>                                                                                                                                                                                              
+    * { margin: 0; padding: 0; box-sizing: border-box; }
                                                                                                                                                                                                        
-    <div class="category-filter">                                                                                                                                                                      
-      <button class="category-btn active" data-cat="all" onclick="selectCategory(this)">전체</button>                                                                                                  
-      <button class="category-btn" data-cat="한식" onclick="selectCategory(this)">🇰🇷 한식</button>                                                                                                     
-      <button class="category-btn" data-cat="중식" onclick="selectCategory(this)">🥟🇷중 식</button>                                                                                                     
-      <button class="category-btn" data-cat="일식" onclick="selectCategory(this)">🍣 일식</button>
-      <button class="category-btn" data-cat="양식" onclick="selectCategory(this)">🍝 양식</button>                                                                                                      
-      <button class="category-btn" data-cat="분식" onclick="selectCategory(this)">🍢 분식</button>                                                                                                     ─
-      <button class="category-btn" data-cat="패스트푸드" onclick="selectCategory(this)">🍔 패스트푸드</button>                                                                                          
-    </div>                                                                                                                                                                                             
+    body {      
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff6b6b, #feca57, #ff9ff3, #48dbfb);                                                                                                                         
+      background-size: 400% 400%;                                                                                                                                                                      
+      animation: bg 8s ease infinite;                                                                                                                                                                  
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;                                                                                                                                 
+      display: flex;                                                                                                                                                                                   
+      align-items: center;
+      justify-content: center;                                                                                                                                                                         
+    }           
+
+    @keyframes bg {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }                                                                                                                                                          
+      100% { background-position: 0% 50%; }
+    }                                                                                                                                                                                                  
+                
+    .card {
+      background: white;
+      border-radius: 30px;                                                                                                                                                                             
+      padding: 60px 50px;
+      text-align: center;                                                                                                                                                                              
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      width: 360px;                                                                                                                                                                                    
+    }
                                                                                                                                                                                                        
-    <div class="result-box" id="resultBox">                                                                                                                                                            
-      <p class="result-placeholder">버튼을 눌러 오늘의 메뉴를 뽑아보세요!</p>                                                                                                                          
-    </div>                                                                   
+    h1 {        
+      font-size: 1.8rem;
+      font-weight: 900;                                                                                                                                                                                
+      color: #2d3436;
+      margin-bottom: 8px;                                                                                                                                                                              
+    }                                                                                                                                                                                                  
+ 
+    .sub {                                                                                                                                                                                             
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    .result {
+      height: 160px;
+      border-radius: 20px;                                                                                                                                                                             
+      background: #f8f8f8;
+      display: flex;                                                                                                                                                                                   
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+    }                                                                                                                                                                                                  
+ 
+    .name  { font-size: 2rem; font-weight: 900; color: #d63031; }                                                                                                                                      
+    .hint  { font-size: 0.85rem; color: #aaa; margin-top: 6px; }
+    .placeholder { color: #ccc; font-size: 0.95rem; }                                                                                                                                                  
+ 
+    @keyframes pop {                                                                                                                                                                                   
+      0%   { transform: scale(0.3); opacity: 0; }
+      70%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }                                                                                                                                                        
+    }
+    .pop { animation: pop 0.4s ease forwards; }                                                                                                                                                        
+                
+    button {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;                                                                                                                                                                                    
+      border: none;
+      padding: 16px 0;                                                                                                                                                                                 
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 50px;
+      cursor: pointer;                                                                                                                                                                                 
+      box-shadow: 0 8px 20px rgba(255,107,107,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;                                                                                                                                                   
+    }           
+
+    button:hover  { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,107,107,0.5); }                                                                                                      
+    button:active { transform: translateY(1px); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }                                                                                                                            
+  </style>                                                                                                                                                                                             
+</head>
+<body>                                                                                                                                                                                                 
+                
+<div class="card">
+  <h1>오늘 뭐먹지?</h1>
+  <p class="sub">고민하지 말고 그냥 눌러봐!</p>
                                                                                                                                                                                                        
-    <button class="spin-btn" id="spinBtn" onclick="pickMenu()">🎲 메뉴 뽑기!</button>                                                                                                                   
-                                                                                                                                                                                                      ─
-    <div class="history" id="historySection" style="display:none;">                                                                                                                                    
-      <p class="history-title">최근 추천</p>                                                                                                                                                           
-      <div class="history-list" id="historyList"></div>
-    </div>                                                                                                                                                                                             
-  </div>  
+  <div class="result" id="result">
+    <p class="placeholder">버튼을 눌러보세요!</p>                                                                                                                                                      
+  </div>        
+
+  <button id="btn" onclick="pick()">음식 추천받기</button>                                                                                                                                             
+</div>
                                                                                                                                                                                                        
-  <script src="script.js"></script>
-</body>                            
+<script>        
+  const foods = [
+    "삼겹살", "된장찌개", "비빔밥", "김치찌개", "냉면",
+    "삼계탕", "불고기", "짜장면", "짬뽕", "탕수육",                                                                                                                                                    
+    "마라탕", "초밥", "라멘", "돈카츠", "우동",
+    "파스타", "스테이크", "피자", "떡볶이", "김밥",                                                                                                                                                    
+    "라면", "치킨", "햄버거", "타코", "샌드위치",
+    "갈비탕", "설렁탕", "만두", "볶음밥", "튀김",                                                                                                                                                      
+  ];            
+                                                                                                                                                                                                       
+  function pick() {
+    const btn = document.getElementById('btn');                                                                                                                                                        
+    const box = document.getElementById('result');
+    btn.disabled = true;
+
+    let tick = 0;
+    const timer = setInterval(() => {
+      const r = foods[Math.floor(Math.random() * foods.length)];
+      box.innerHTML = `<div style="font-size:1.5rem;font-weight:900;color:#636e72">${r}</div>`;                                                                                                        
+      tick++;                                                                                                                                                                                          
+      if (tick >= 20) {                                                                                                                                                                                
+        clearInterval(timer);                                                                                                                                                                          
+        const result = foods[Math.floor(Math.random() * foods.length)];
+        box.innerHTML = `
+          <div class="name pop">${result}</div>                                                                                                                                                        
+          <div class="hint pop">오늘 점심은 이걸로 결정!</div>
+        `;                                                                                                                                                                                             
+        btn.disabled = false;
+      }
+    }, 70);
+  }                                                                                                                                                                                                    
+</script>
+                                                                                                                                                                                                       
+</body>         
 </html>
