@@ -1,1 +1,210 @@
-/* Add styles here */
+* {             
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #ff9ff3, #48dbfb);                                                                                                                             
+    background-size: 400% 400%;                                                                                                                                                                          
+    animation: gradientBG 8s ease infinite;                                                                                                                                                              
+    font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;                                                                                                                                          
+    display: flex;                                                                                                                                                                                       
+    flex-direction: column;
+    align-items: center;                                                                                                                                                                                 
+    justify-content: center;
+    padding: 20px;                                                                                                                                                                                       
+  }
+                                                                                                                                                                                                         
+  @keyframes gradientBG {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }                                                                                                                                                              
+    100% { background-position: 0% 50%; }
+  }                                                                                                                                                                                                      
+                  
+  .container {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 30px;                                                                                                                                                                                 
+    padding: 50px 40px;
+    max-width: 500px;                                                                                                                                                                                    
+    width: 100%;                                                                                                                                                                                         
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);                                                                                                                                                         
+  }               
+
+  h1 {                                                                                                                                                                                                   
+    font-size: 2.4rem;
+    font-weight: 800;                                                                                                                                                                                    
+    color: #2d3436;
+    margin-bottom: 8px;
+  }                                                                                                                                                                                                      
+   
+  .subtitle {                                                                                                                                                                                            
+    color: #636e72;
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }                                                                                                                                                                                                      
+   
+  .category-filter {                                                                                                                                                                                     
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }                                                                                                                                                                                                      
+   
+  .category-btn {                                                                                                                                                                                        
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 2px solid #dfe6e9;
+    background: white;                                                                                                                                                                                   
+    color: #636e72;
+    font-size: 0.85rem;                                                                                                                                                                                  
+    cursor: pointer;                                                                                                                                                                                     
+    transition: all 0.2s;
+    font-weight: 600;                                                                                                                                                                                    
+  }               
+
+  .category-btn.active {                                                                                                                                                                                 
+    border-color: #ff6b6b;
+    background: #ff6b6b;                                                                                                                                                                                 
+    color: white; 
+  }
+
+  .category-btn:hover:not(.active) {
+    border-color: #ff6b6b;
+    color: #ff6b6b;                                                                                                                                                                                      
+  }
+                                                                                                                                                                                                         
+  .result-box {   
+    min-height: 160px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);                                                                                                                                               
+    display: flex;
+    flex-direction: column;                                                                                                                                                                              
+    align-items: center;
+    justify-content: center;                                                                                                                                                                             
+    margin-bottom: 30px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }                                                                                                                                                                                                      
+   
+  .result-box.revealed {                                                                                                                                                                                 
+    background: linear-gradient(135deg, #fff5f5, #ffe3e3);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+  }                                                                                                                                                                                                      
+   
+  .result-emoji {                                                                                                                                                                                        
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: bounceIn 0.5s ease;                                                                                                                                                                       
+  }
+                                                                                                                                                                                                         
+  .result-name {  
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d63031;                                                                                                                                                                                      
+    animation: bounceIn 0.5s ease;
+  }                                                                                                                                                                                                      
+                  
+  .result-category {
+    font-size: 0.85rem;
+    color: #b2bec3;                                                                                                                                                                                      
+    margin-top: 6px;
+    animation: bounceIn 0.5s ease;                                                                                                                                                                       
+  }               
+                                                                                                                                                                                                         
+  .result-placeholder {
+    font-size: 1rem;
+    color: #b2bec3;
+  }
+
+  @keyframes bounceIn {                                                                                                                                                                                  
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.1); }                                                                                                                                                                      
+    100% { transform: scale(1); opacity: 1; }                                                                                                                                                            
+  }
+                                                                                                                                                                                                         
+  .spin-btn {     
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;                                                                                                                                                                                        
+    border: none;
+    padding: 16px 48px;                                                                                                                                                                                  
+    font-size: 1.2rem;
+    font-weight: 700;                                                                                                                                                                                    
+    border-radius: 50px;
+    cursor: pointer;                                                                                                                                                                                     
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    transition: all 0.2s ease;                                                                                                                                                                           
+    letter-spacing: 1px;
+  }                                                                                                                                                                                                      
+                  
+  .spin-btn:hover {                                                                                                                                                                                      
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(255, 107, 107, 0.5);
+  }                                                                                                                                                                                                      
+   
+  .spin-btn:active {                                                                                                                                                                                     
+    transform: translateY(0);
+  }
+
+  .spin-btn.spinning {
+  }                            
+   
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }                                                                                                                                                               
+    20%  { transform: translateX(-6px) rotate(-2deg); }
+    40%  { transform: translateX(6px) rotate(2deg); }                                                                                                                                                    
+    60%  { transform: translateX(-4px) rotate(-1deg); }                                                                                                                                                  
+    80%  { transform: translateX(4px) rotate(1deg); }  
+  }                                                                                                                                                                                                      
+                                                                                                                                                                                                         
+  .rolling-text {
+    font-size: 1.8rem;                                                                                                                                                                                   
+    font-weight: 800; 
+    color: #636e72;  
+    animation: roll 0.08s linear infinite;
+  }                                       
+                                                                                                                                                                                                         
+  @keyframes roll {
+    0%   { opacity: 1; transform: translateY(0); }                                                                                                                                                       
+    50%  { opacity: 0.3; transform: translateY(-4px); }
+    100% { opacity: 1; transform: translateY(0); }                                                                                                                                                       
+  }                                               
+                                                                                                                                                                                                         
+  .lucky-msg {    
+    font-size: 0.9rem;                                                                                                                                                                                   
+    color: #00b894;   
+    font-weight: 600;                                                                                                                                                                                    
+    margin-top: 8px; 
+  }                 
+                                                                                                                                                                                                         
+  .history {
+    margin-top: 24px;                                                                                                                                                                                    
+    text-align: left;
+  }                  
+   
+  .history-title {
+    font-size: 0.8rem;
+    color: #b2bec3;   
+    font-weight: 600;                                                                                                                                                                                    
+    text-transform: uppercase;
+    letter-spacing: 1px;                                                                                                                                                                                 
+    margin-bottom: 8px; 
+  }                    
+                                                                                                                                                                                                         
+  .history-list {
+    display: flex;                                                                                                                                                                                       
+    flex-wrap: wrap;
+    gap: 6px;       
+  }          
+   
+  .history-tag {
+    background: #f1f2f6;
+    color: #636e72;     
+    border-radius: 12px;                                                                                                                                                                                 
+    padding: 4px 12px;  
+    font-size: 0.8rem;                                                                                                                                                                                   
+    font-weight: 600;                                                                                                                                                                                    
+  }

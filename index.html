@@ -1,14 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html>                                                                                                                                                                                        
+<html lang="ko">
+<head>                                                                                                                                                                                                 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
-</head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
-</body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />                                                                                                                             
+  <title>오늘 뭐먹지?</title>                                                                                                                                                                          
+  <link rel="stylesheet" href="style.css" />
+</head>                                                                                                                                                                                                
+<body>          
+  <div class="container">                                                                                                                                                                              
+    <h1>🍽️  오늘 뭐먹지?</h1>
+    <p class="subtitle">고민 그만! 버튼 하나로 메뉴 결정 완료</p>
+                                                                                                                                                                                                       
+    <div class="category-filter">                                                                                                                                                                      
+      <button class="category-btn active" data-cat="all" onclick="selectCategory(this)">전체</button>                                                                                                  
+      <button class="category-btn" data-cat="한식" onclick="selectCategory(this)">🇰🇷 한식</button>                                                                                                     
+      <button class="category-btn" data-cat="중식" onclick="selectCategory(this)">🥟🇷중 식</button>                                                                                                     
+      <button class="category-btn" data-cat="일식" onclick="selectCategory(this)">🍣 일식</button>
+      <button class="category-btn" data-cat="양식" onclick="selectCategory(this)">🍝 양식</button>                                                                                                      
+      <button class="category-btn" data-cat="분식" onclick="selectCategory(this)">🍢 분식</button>                                                                                                     ─
+      <button class="category-btn" data-cat="패스트푸드" onclick="selectCategory(this)">🍔 패스트푸드</button>                                                                                          
+    </div>                                                                                                                                                                                             
+                                                                                                                                                                                                       
+    <div class="result-box" id="resultBox">                                                                                                                                                            
+      <p class="result-placeholder">버튼을 눌러 오늘의 메뉴를 뽑아보세요!</p>                                                                                                                          
+    </div>                                                                   
+                                                                                                                                                                                                       
+    <button class="spin-btn" id="spinBtn" onclick="pickMenu()">🎲 메뉴 뽑기!</button>                                                                                                                   
+                                                                                                                                                                                                      ─
+    <div class="history" id="historySection" style="display:none;">                                                                                                                                    
+      <p class="history-title">최근 추천</p>                                                                                                                                                           
+      <div class="history-list" id="historyList"></div>
+    </div>                                                                                                                                                                                             
+  </div>  
+                                                                                                                                                                                                       
+  <script src="script.js"></script>
+</body>                            
 </html>
